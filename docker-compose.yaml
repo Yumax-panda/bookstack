@@ -8,7 +8,7 @@ services:
       MYSQL_DATABASE: bookstack
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     volumes:
-      - ./mysql/data:/var/lib/mysql
+      - mysql:/var/lib/mysql/data
     expose:
       - "3306:3306"
 
