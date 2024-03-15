@@ -1,23 +1,47 @@
 services:
   mysql:
     image: mysql:latest
-    container_name: mysql
     restart: always
+    container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: bookstack
+      TZ: Asia/Tokyo
     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
     volumes:
-      - mysql:/var/lib/mysql/data
+      - mysql:/var/lib/mysql
     expose:
+      - "3306"
+    ports:
       - "3306:3306"
 
   adminer:
     image: adminer:latest
-    ports:
-      - 8081:8080
+    restart: always
     environment:
       ADMINER_DEFAULT_SERVER: mysql
+    expose:
+      - "8080"
+    ports:
+      - "8081:8080"
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+    #  bookstackの略
+       BS_ORIGIN: http://localhost:3000
+       BS_MARIADB_HOST: mysql
+    expose:
+      - "80"
+      - "6060"
+    ports:
+      - "6060:6060"
+    depends_on:
+      - mysql
+    volumes:
+      - ./:/app/bookstackß
 
 volumes:
   mysql:
