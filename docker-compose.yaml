@@ -12,8 +12,6 @@ services:
       - mysql:/var/lib/mysql
     expose:
       - "3306"
-    ports:
-      - "3306:3306"
 
   adminer:
     image: adminer:latest
@@ -29,19 +27,24 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: always
+    tty: true
+    container_name: server
     environment:
-    #  bookstackの略
-       BS_ORIGIN: http://localhost:3000
-       BS_MARIADB_HOST: mysql
-    expose:
-      - "80"
-      - "6060"
+      TZ: Asia/Tokyo
+      DB_HOSTNAME: mysql
+      DB_DATABASE: bookstack
+      DB_USERNAME: root
+      DB_PASSWORD: password
+      DB_PORT: 3306
+      #  bookstackの略
+      BS_ORIGIN: http://localhost:8000
+
     ports:
-      - "6060:6060"
+      - "8000:8000"
     depends_on:
       - mysql
     volumes:
-      - ./:/app/bookstackß
+      - ./:/app/bookstack
 
 volumes:
   mysql:
