@@ -1,0 +1,8 @@
+origin: http://localhost:3000
+port: 8000
+db:
+  host: mysql
+  port: 3306
+  username: root
+  password: password
+  database: bookstack
