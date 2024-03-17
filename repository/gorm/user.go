@@ -10,6 +10,10 @@ type userRepository struct {
 	db *gorm.DB
 }
 
+func makeUserRepository(db *gorm.DB) *userRepository {
+	return &userRepository{db}
+}
+
 // FindAll implements UserRepository interface
 func (r *userRepository) FindAll() ([]model.User, error) {
 	var users []model.User
