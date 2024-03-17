@@ -11,6 +11,7 @@ import (
 
 type Config struct {
 	Origin string `mapstructure:"origin" yaml:"origin"`
+	Port   int    `mapstructure:"port" yaml:"port"`
 	DB     struct {
 		Host     string `mapstructure:"host" yaml:"host"`
 		Port     int    `mapstructure:"port" yaml:"port"`
@@ -22,6 +23,7 @@ type Config struct {
 
 func setDefaults() {
 	viper.SetDefault("db.host", "http://localhost:8000")
+	viper.SetDefault("port", 8000)
 	viper.SetDefault("db.port", 3306)
 	viper.SetDefault("db.username", "root")
 	viper.SetDefault("db.password", "password")
