@@ -1,7 +1,9 @@
 package gorm
 
 import (
+	"bookstack/migration"
 	"bookstack/repository"
+	"fmt"
 
 	"gorm.io/gorm"
 )
@@ -12,8 +14,11 @@ type Repository struct {
 }
 
 func NewGormRepository(db *gorm.DB) repository.Repository {
-	return &Repository{
+	repo := &Repository{
 		DB:             db,
 		UserRepository: makeUserRepository(db),
 	}
+	migration.Migrate(db)
+	fmt.Println("migration was successful")
+	return repo
 }
