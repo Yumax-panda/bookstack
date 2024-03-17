@@ -41,8 +41,5 @@ func main() {
 	sqlDB := connectDB()
 	defer sqlDB.Close()
 	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(200, "Hello, World!")
-	})
 	e.Start(":8000")
 }
