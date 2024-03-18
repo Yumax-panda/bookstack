@@ -31,14 +31,6 @@ services:
     container_name: server
     environment:
       TZ: Asia/Tokyo
-      DB_HOSTNAME: mysql
-      DB_DATABASE: bookstack
-      DB_USERNAME: root
-      DB_PASSWORD: password
-      DB_PORT: 3306
-      #  bookstackの略
-      BS_ORIGIN: http://localhost:8000
-
     ports:
       - "8000:8000"
     depends_on:
