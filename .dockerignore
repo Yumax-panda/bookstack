@@ -15,7 +15,6 @@
 .tbls.yml
 codecov.yml
 config.example.yml
-config.yaml
 docker-compose.yaml
 Dockerfile
 LICENSE
