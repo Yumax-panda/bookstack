@@ -12,7 +12,7 @@ type User struct {
 	DisplayName string    `gorm:"type:varchar(32);not null;default:''"`
 	Password    string    `gorm:"type:char(128);not null;default:''"`
 	Salt        string    `gorm:"type:char(128);not null;default:''"`
-	Icon        uuid.UUID `gorm:"type:char(36);not null"`
+	Icon        string    `gorm:"type:TEXT COLLATE utf8mb4_bin NOT NULL"`
 	CreatedAt   time.Time `gorm:"precision:6"`
 	UpdatedAt   time.Time `gorm:"precision:6"`
 
