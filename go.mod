@@ -3,7 +3,7 @@ module bookstack
 go 1.22.1
 
 require (
-	github.com/google/uuid v1.6.0
+	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/google/wire v0.6.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/spf13/cobra v1.8.0
