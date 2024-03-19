@@ -44,4 +44,15 @@ func PermissionsFromArray(perms []Permission) Permissions {
 	return res
 }
 
-var List = []Permission{}
+var List = []Permission{
+	// ユーザー関連
+	GetUser,
+	RegisterUser,
+	GetMe,
+	EditMe,
+	// ノート関連
+	GetNote,
+	CreateNote,
+	EditNote,
+	DeleteNote,
+}
