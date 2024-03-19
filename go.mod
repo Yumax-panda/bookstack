@@ -3,6 +3,7 @@ module bookstack
 go 1.22.1
 
 require (
+	github.com/blendle/zapdriver v1.3.1
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/google/wire v0.6.0
 	github.com/labstack/echo v3.3.10+incompatible
@@ -10,6 +11,7 @@ require (
 	github.com/motoki317/sc v1.7.1
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.18.2
+	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.18.0
 	gorm.io/driver/mysql v1.5.4
 	gorm.io/gorm v1.25.7
