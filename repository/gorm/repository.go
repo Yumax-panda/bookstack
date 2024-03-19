@@ -9,16 +9,14 @@ import (
 )
 
 type Repository struct {
-	DB *gorm.DB
+	db *gorm.DB
 	repository.UserRepository
-	repository.NoteRepository
 }
 
 func NewGormRepository(db *gorm.DB) repository.Repository {
 	repo := &Repository{
-		DB:             db,
+		db:             db,
 		UserRepository: makeUserRepository(db),
-		NoteRepository: makeNoteRepository(db),
 	}
 	migration.Migrate(db)
 	fmt.Println("migration was successful")

@@ -8,15 +8,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type noteRepository struct {
-	db *gorm.DB
-}
-
-func makeNoteRepository(db *gorm.DB) *noteRepository {
-	return &noteRepository{db}
-}
-
-func (r *noteRepository) CreateNote(args repository.CreateNoteArgs) (*model.Note, error) {
+func (repo *Repository) CreateNote(args repository.CreateNoteArgs) (*model.Note, error) {
 	if userId := args.UserID; userId == uuid.Nil {
 		return nil, repository.ErrNilID
 	}
@@ -26,7 +18,7 @@ func (r *noteRepository) CreateNote(args repository.CreateNoteArgs) (*model.Note
 		Text:   args.Text,
 	}
 
-	err := r.db.Transaction(func(tx *gorm.DB) error {
+	err := repo.db.Transaction(func(tx *gorm.DB) error {
 		if err := tx.Create(note).Error; err != nil {
 			return err
 		}
