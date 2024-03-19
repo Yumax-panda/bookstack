@@ -7,6 +7,7 @@ require (
 	github.com/google/wire v0.6.0
 	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo/v4 v4.11.4
+	github.com/motoki317/sc v1.7.1
 	github.com/spf13/cobra v1.8.0
 	github.com/spf13/viper v1.18.2
 	golang.org/x/crypto v0.18.0
