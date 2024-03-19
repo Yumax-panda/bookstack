@@ -18,3 +18,7 @@ type Note struct {
 
 	User *User `gorm:"constraint:notes_user_id_users_id_foreign,OnUpdate:CASCADE,OnDelete:CASCADE"`
 }
+
+func (Note) TableName() string {
+	return "notes"
+}
