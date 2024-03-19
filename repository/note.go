@@ -8,6 +8,7 @@ import (
 
 type CreateNoteArgs struct {
 	UserID uuid.UUID
+	Title  string
 	Text   string
 }
 

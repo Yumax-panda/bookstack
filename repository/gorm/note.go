@@ -22,6 +22,7 @@ func (r *noteRepository) CreateNote(args repository.CreateNoteArgs) (*model.Note
 	}
 	note := &model.Note{
 		UserID: args.UserID,
+		Title:  args.Title,
 		Text:   args.Text,
 	}
 
