@@ -11,6 +11,7 @@ func AllTables() []interface{} {
 		&model.User{},
 		&model.UserProfile{},
 		&model.Note{},
+		&model.SessionRecord{},
 	}
 }
 
