@@ -19,6 +19,11 @@ type UsersQuery struct {
 	EnableProfileLoading bool
 }
 
+func (q UsersQuery) NameOf(name string) UsersQuery {
+	q.Name = optional.From(name)
+	return q
+}
+
 type UserRepository interface {
 	// CreateUser 新規ユーザーを作成
 	//
