@@ -2,6 +2,7 @@ package repository
 
 import (
 	"bookstack/model"
+	"bookstack/utils/optional"
 
 	"github.com/gofrs/uuid"
 )
@@ -11,6 +12,11 @@ type CreateUserArgs struct {
 	DisplayName string
 	Icon        string
 	Password    string
+}
+
+type UsersQuery struct {
+	Name                 optional.Of[string]
+	EnableProfileLoading bool
 }
 
 type UserRepository interface {
@@ -24,4 +30,8 @@ type UserRepository interface {
 	// 成功した場合、ユーザーとnilを返す。
 	// ユーザーが存在しない場合、ErrNotFoundを返す。
 	GetUser(id uuid.UUID, withProfile bool) (model.UserInfo, error)
+	// GetUsers
+	//
+	// 成功した場合、ユーザー一覧とnilを返す。
+	GetUsers(query UsersQuery) ([]model.UserInfo, error)
 }

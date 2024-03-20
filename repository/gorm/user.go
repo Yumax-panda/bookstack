@@ -96,3 +96,30 @@ func (r *userRepository) GetUser(id uuid.UUID, withProfile bool) (model.UserInfo
 	}
 	return r.users.Get(context.Background(), getUserArg{id, withProfile})
 }
+
+func (r *userRepository) GetUsers(query repository.UsersQuery) ([]model.UserInfo, error) {
+	arr := make([]model.User, 0)
+	if err := r.makeGetUsersTx(query).Find(&arr).Error; err != nil {
+		return nil, err
+	}
+	users := make([]model.UserInfo, len(arr))
+
+	for i, u := range arr {
+		users[i] = &u
+	}
+	return users, nil
+}
+
+func (r *userRepository) makeGetUsersTx(query repository.UsersQuery) *gorm.DB {
+	tx := r.db.Table("users")
+
+	if query.Name.Valid {
+		tx = tx.Where("users.name = ?", query.Name.V)
+	}
+
+	if query.EnableProfileLoading {
+		tx = tx.Preload("Profile")
+	}
+
+	return tx
+}
