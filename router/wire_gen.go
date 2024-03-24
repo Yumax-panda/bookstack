@@ -8,6 +8,7 @@ package router
 
 import (
 	"bookstack/repository"
+	"bookstack/router/session"
 	"bookstack/router/v3"
 	"gorm.io/gorm"
 )
@@ -16,8 +17,10 @@ import (
 
 func newRouter(db *gorm.DB, repo repository.Repository) *Router {
 	echo := newEcho(repo)
+	store := session.NewGormStore(db)
 	handlers := &v3.Handlers{
-		Repo: repo,
+		Repo:      repo,
+		SessStore: store,
 	}
 	router := &Router{
 		e:  echo,
