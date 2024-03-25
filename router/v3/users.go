@@ -44,6 +44,7 @@ func (r *PostUserRequest) Validate() error {
 	)
 }
 
+// CreateUser POST /users
 func (h *Handlers) CreateUser(c echo.Context) error {
 	var req PostUserRequest
 
