@@ -110,6 +110,14 @@ func (r *userRepository) GetUsers(query repository.UsersQuery) ([]model.UserInfo
 	return users, nil
 }
 
+func (r *userRepository) UserExists(id uuid.UUID) (bool, error) {
+	if id == uuid.Nil {
+		return false, nil
+	}
+	return gormutil.RecordExists(r.db, &model.User{ID: id})
+
+}
+
 func (r *userRepository) makeGetUsersTx(query repository.UsersQuery) *gorm.DB {
 	tx := r.db.Table("users")
 
