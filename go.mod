@@ -4,6 +4,7 @@ go 1.22.1
 
 require (
 	github.com/blendle/zapdriver v1.3.1
+	github.com/go-ozzo/ozzo-validation/v4 v4.3.0
 	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/google/wire v0.6.0
 	github.com/guregu/null v4.0.0+incompatible
@@ -20,6 +21,7 @@ require (
 )
 
 require (
+	github.com/asaskevich/govalidator v0.0.0-20200108200545-475eaeb16496 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
 	github.com/go-sql-driver/mysql v1.7.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
