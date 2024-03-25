@@ -39,4 +39,8 @@ type UserRepository interface {
 	//
 	// 成功した場合、ユーザー一覧とnilを返す。
 	GetUsers(query UsersQuery) ([]model.UserInfo, error)
+	// UserExists 指定したIDのユーザーが存在するか確認
+	//
+	// 存在する場合、trueとnilを返す。
+	UserExists(id uuid.UUID) (bool, error)
 }
