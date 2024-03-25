@@ -10,6 +10,7 @@ import (
 	"bookstack/router/utils"
 )
 
+// BindAndValidate binds and validates the request body to the given struct.
 func BindAndValidate(c echo.Context, i interface{}) error {
 	if err := c.Bind(i); err != nil {
 		return err
